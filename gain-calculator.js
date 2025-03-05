@@ -147,6 +147,7 @@ function formatNum(number) {
         if (splitNumber[1].startsWith("+")) splitNumber[1] = splitNumber[1].slice(1);
         return parseFloat(splitNumber[0]).toFixed(3) + '×10<sup>' + splitNumber[1] + '</sup>';
     }
+    if (Math.abs(number) < 1) return number.toLocaleString("en-US", { maximumSignificantDigits: 4 })
     return number.toLocaleString("en-US");
 }
 
