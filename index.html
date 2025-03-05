@@ -1,0 +1,83 @@
+<html>
+    <head>
+        <link rel="icon" href="https://randomperson3465.github.io/img/livecountsedit_logo.png">
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <h1>Livecountsedit Gain Calculator</h1>
+        <noscript>This tool requires JavaScript.</noscript>
+        <span>Gain Type <select id="gainType">
+            <option value="uniform">Uniform (default)</option>
+            <option value="gaussian">Gaussian</option>
+            <option value="custom">Custom Distribution</option>
+        </select></span>
+        <br>
+        <span>Update Interval <input id="updateInterval" type="number" step="any" min="0" value="2"> <select id="updateIntervalUnit">
+            <option value="1">second(s)</option>
+            <option value="60">minute(s)</option>
+            <option value="3600">hour(s)</option>
+            <option value="86400">day(s)</option>
+        </select> </span>
+        <br>
+        <span>Current Count <input id="count" type="number" value="0"></span>
+        <br>
+        <br>
+        <div id="uniformGainSettings">
+            <span>Minimum Gain <input id="minGain" type="number" step="any" value="0"></span>
+            <br>
+            <span>Maximum Gain <input id="maxGain" type="number" step="any" value="0"></span>
+        </div>
+        <div id="gaussianGainSettings">
+            <span>Mean Gain <input id="meanGain" type="number" step="any" value="0"></span>
+            <br>
+            <span>Standard Deviation <input id="stDevGain" type="number" step="any" value="0" min="0"></span>
+        </div>
+        <div id="customDistributionSettings">
+            <span>Custom Distribution</span><br>
+            <textarea id="customGain" placeholder="Min, Max, Weight"></textarea>
+        </div>
+        <span>Gain Is Per Every <input id="gainPer" type="number" step="any" min="0" value="1"> <select id="gainPerUnit">
+            <option value="-1">update interval(s)</option>
+            <option value="1">second(s)</option>
+            <option value="60">minute(s)</option>
+            <option value="3600">hour(s)</option>
+            <option value="86400">day(s)</option>
+        </select></span>
+        <br>
+        <br>
+        <span>Calculate Count and Gain After <input id="timeAfter" type="number" step="any" min="0" value="1"> <select id="timeAfterUnit">
+            <option value="-1">update interval(s)</option>
+            <option value="1">second(s)</option>
+            <option value="60">minute(s)</option>
+            <option value="3600" selected>hour(s)</option>
+            <option value="86400">day(s)</option>
+        </select></span>
+        <h2>Calculated Results</h2>
+        <div id="error">
+            <p>Error goes here</p>
+        </div>
+        <div id="results">
+            <span>Average gain per update interval: <span id="meanOneInterval">0</span></span><br>
+            <span>Standard deviation of gain per update interval: <span id="stDevOneInterval">0</span></span><br>
+            <span>Update intervals passed: <span id="numIntervalsPassed">0</span></span>
+            <br>
+            <br>
+            <span>Average gain after <span class="givenTime">0 seconds</span>: <strong><span id="meanAfter">0</span></strong></span><br>
+            <span>Average count after <span class="givenTime">0 seconds</span>: <strong><span id="countAfter">0</span></strong><br>
+            <span>Standard deviation of gain/count after <span class="givenTime">0 seconds</span>: <span id="stDevAfter">0</span></span>
+            <br>
+            <br>
+            <p id="warning">Warning: approximation given below may be inaccurate as not enough update intervals have passed.</p>
+            <span>Calculated <select id="confidenceLevel">
+                <option value="80">80</option>
+                <option value="90">90</option>
+                <option value="95" selected>95</option>
+                <option value="98">98</option>
+                <option value="99">99</option>
+            </select>% confidence interval for:</span><br>
+            <span>Gain after <span class="givenTime">0 seconds</span>: <span id="lowerGainAfter">0</span> to <span id="upperGainAfter">0</span></span><br>
+            <span>Count after <span class="givenTime">0 seconds</span>: <span id="lowerCountAfter">0</span> to <span id="upperCountAfter">0</span></span>
+        </div>
+    </body>
+    <script src="./gain-calculator.js"></script>
+</html>
