@@ -62,11 +62,7 @@ function update() {
         if (!isFinite(avg)) return showError("Invalid custom distribution");
         for (const row of dist) {
             let a = row[0], b = row[1];
-            if (a === b) {
-                variance += a * a * row[2] / totalWeight;
-            } else {
-                variance += (b * b * b - a * a * a) / 3 / (b - a) * row[2] / totalWeight;
-            }
+            variance += (a * a + a * b + b * b) / 3 * row[2] / totalWeight;
         }
         variance -= avg * avg;
         stdev = Math.sqrt(Math.max(0,variance));
