@@ -82,7 +82,7 @@ function update() {
     countAfter.innerHTML = formatNum(Math.round(getNum(count) + avgGain));
     stDevAfter.innerHTML = formatNum(stDevOfGain);
 
-    warning.style.display = intervalsPassed < 30 && intervalsPassed !== 0 ? "block" : "none";
+    warning.style.display = intervalsPassed < 30 && intervalsPassed !== 0 && gainType.value !== "gaussian" ? "block" : "none";
 
     zCriticalValue = zCriticalValues[confidenceLevel.value];
     lowerGainAfter.innerHTML = formatNum(Math.round(avgGain - zCriticalValue * stDevOfGain));
